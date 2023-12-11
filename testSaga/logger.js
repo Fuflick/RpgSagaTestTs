@@ -5,15 +5,10 @@ var Logger = /** @class */ (function () {
     function Logger() {
     }
     Logger.getCharacterParams = function (unit) {
-        return "(".concat(unit.classType, " ").concat(unit.getName, ")");
+        return "".concat(unit.classType, " ").concat(unit.getName);
     };
     Logger.startMessage = function () {
         console.log('Fight started now');
-    };
-    Logger.attackMessage = function (assaulter, defending) {
-        console.log("".concat(this.getCharacterParams(assaulter).toString(), " attacks ").concat(this.getCharacterParams(defending).toString()));
-        console.log("".concat(this.getCharacterParams(assaulter).toString(), " damage = ").concat(assaulter.getDamage.toString(), " "));
-        console.log("".concat(this.getCharacterParams(defending).toString(), " health became ").concat(defending.getHealth - assaulter.getDamage));
     };
     Logger.characterBurn = function (character, firedamage) {
         console.log("".concat(this.getCharacterParams(character).toString(), " burn and take ").concat(firedamage, " damage"));

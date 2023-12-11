@@ -8,6 +8,7 @@ var Unit = /** @class */ (function () {
     function Unit() {
         this.classType = '';
         this.burning = false;
+        this.skillUsed = false;
         this.minHealth = 3;
         this.maxHealth = 15;
     }
@@ -18,6 +19,16 @@ var Unit = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(Unit.prototype, "isSkillUsed", {
+        get: function () {
+            return this.skillUsed;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Unit.prototype.useSkill = function () {
+        this.skillUsed = true;
+    };
     Object.defineProperty(Unit.prototype, "getHealth", {
         get: function () {
             return this.health;
@@ -50,20 +61,15 @@ var Unit = /** @class */ (function () {
     Unit.prototype.becameBurning = function () {
         this.burning = true;
     };
-    Unit.prototype.finishBurning = function () {
-        this.burning = false;
-    };
     Unit.prototype.attack = function (enemy) {
         console.log("".concat(this.classType, " ").concat(this.getName, " attack ").concat(logger_1.Logger.getCharacterParams(enemy).toString()));
         console.log("".concat(this.getName, " damage = ").concat(this.getDamage));
-        console.log("".concat(enemy.getName, " health became ").concat(enemy.getHealth - this.getDamage, "}]"));
+        console.log("".concat(enemy.getName, " health became ").concat(enemy.getHealth - this.getDamage));
         enemy.takeDamage(this.damage);
     };
     Unit.prototype.burnInFigth = function () {
-        if (this.isBurn) {
-            this.health -= stringConsts_1.fireDamage;
-            logger_1.Logger.characterBurn(this, stringConsts_1.fireDamage);
-        }
+        this.takeDamage(stringConsts_1.fireDamage);
+        logger_1.Logger.characterBurn(this, stringConsts_1.fireDamage);
     };
     return Unit;
 }());

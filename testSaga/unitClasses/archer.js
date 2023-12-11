@@ -17,6 +17,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Archer = void 0;
 var unit_1 = require("../unit");
+var logger_1 = require("../logger");
 var Archer = /** @class */ (function (_super) {
     __extends(Archer, _super);
     function Archer() {
@@ -30,7 +31,19 @@ var Archer = /** @class */ (function (_super) {
         _super.prototype.generateUnit.call(this);
     };
     Archer.prototype.attack = function (enemy) {
-        _super.prototype.attack.call(this, enemy);
+        if (enemy.isBurn) {
+            console.log("".concat(logger_1.Logger.getCharacterParams(this).toString(), " attack ").concat(logger_1.Logger.getCharacterParams(enemy).toString()));
+            enemy.burnInFigth();
+            console.log("".concat(this.getName, " attack ").concat(enemy.getName));
+            console.log("".concat(this.getName, " damage = ").concat(this.getDamage));
+            enemy.takeDamage(this.getDamage);
+            console.log("".concat(enemy.getName, " health became ").concat(enemy.getHealth));
+        }
+        else {
+            console.log("".concat(this.getName, " use fire arrows and ").concat(enemy.getName, " became burning"));
+            _super.prototype.attack.call(this, enemy);
+            enemy.becameBurning();
+        }
     };
     return Archer;
 }(unit_1.Unit));

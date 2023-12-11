@@ -1,4 +1,5 @@
 import { Unit } from "../unit";
+import { Logger } from "../logger";
 
 
 export class Warrior extends Unit{
@@ -12,7 +13,16 @@ export class Warrior extends Unit{
     }
     
     attack(enemy: Unit): void {
-        super.attack(enemy);
+        if(this.isSkillUsed){
+            super.attack(enemy);
+        }
+        else{
+            console.log(`${this.classType} ${this.getName} attack ${Logger.getCharacterParams(enemy).toString()}`);
+        console.log(`${this.getName} use ultimate and it's damage became = ${this.getDamage + 10}`);
+        enemy.takeDamage(this.getDamage + 10);
+        console.log(`${enemy.getName} health became ${enemy.getHealth}`);
+        this.useSkill();
+        }
     }
 
     constructor(){

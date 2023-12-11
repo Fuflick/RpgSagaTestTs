@@ -9,6 +9,7 @@ var Game = /** @class */ (function () {
         for (var i = 0; i < 10; i++) {
             var unit1 = helper_1.Helper.generateCharacter();
             var unit2 = helper_1.Helper.generateCharacter();
+            logger_1.Logger.startMessage();
             logger_1.Logger.fighting(unit1, unit2);
         }
     };

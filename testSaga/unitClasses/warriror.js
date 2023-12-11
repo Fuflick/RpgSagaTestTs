@@ -17,6 +17,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Warrior = void 0;
 var unit_1 = require("../unit");
+var logger_1 = require("../logger");
 var Warrior = /** @class */ (function (_super) {
     __extends(Warrior, _super);
     function Warrior() {
@@ -30,7 +31,16 @@ var Warrior = /** @class */ (function (_super) {
         _super.prototype.generateUnit.call(this);
     };
     Warrior.prototype.attack = function (enemy) {
-        _super.prototype.attack.call(this, enemy);
+        if (this.isSkillUsed) {
+            _super.prototype.attack.call(this, enemy);
+        }
+        else {
+            console.log("".concat(this.classType, " ").concat(this.getName, " attack ").concat(logger_1.Logger.getCharacterParams(enemy).toString()));
+            console.log("".concat(this.getName, " use ultimate and it's damage became = ").concat(this.getDamage + 10));
+            enemy.takeDamage(this.getDamage + 10);
+            console.log("".concat(enemy.getName, " health became ").concat(enemy.getHealth));
+            this.useSkill();
+        }
     };
     return Warrior;
 }(unit_1.Unit));

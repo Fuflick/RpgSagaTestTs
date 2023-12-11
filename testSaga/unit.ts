@@ -12,6 +12,16 @@ export class Unit{
         return this.burning;
     }
 
+    private skillUsed = false;
+
+    get isSkillUsed(): boolean{
+        return this.skillUsed;
+    }
+
+    useSkill(){
+        this.skillUsed = true;
+    }
+
     protected health: number;
 
     get getHealth(): number{
@@ -47,21 +57,15 @@ export class Unit{
         this.burning = true;
     }
 
-    finishBurning(){
-        this.burning = false;
-    }
-
     attack(enemy: Unit){
         console.log(`${this.classType} ${this.getName} attack ${Logger.getCharacterParams(enemy).toString()}`);
         console.log(`${this.getName} damage = ${this.getDamage}`);
-        console.log(`${enemy.getName} health became ${enemy.getHealth - this.getDamage}}]`)
+        console.log(`${enemy.getName} health became ${enemy.getHealth - this.getDamage}`)
         enemy.takeDamage(this.damage);
     }
 
-    protected burnInFigth(){
-        if (this.isBurn){
-            this.health -= fireDamage;
-            Logger.characterBurn(this, fireDamage);
-        }
+    burnInFigth(){
+        this.takeDamage(fireDamage);
+        Logger.characterBurn(this, fireDamage);
     }
 }

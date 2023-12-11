@@ -1,4 +1,6 @@
 import { Unit } from "../unit";
+import { Logger } from "../logger";
+import { fireDamage } from "../stringConsts";
 
 export class Archer extends Unit{
 
@@ -12,7 +14,19 @@ export class Archer extends Unit{
     }
 
     attack(enemy: Unit): void {
-        super.attack(enemy);
+        if (enemy.isBurn){
+            console.log(`${Logger.getCharacterParams(this).toString()} attack ${Logger.getCharacterParams(enemy).toString()}`);
+            enemy.burnInFigth();
+            console.log(`${this.getName} attack ${enemy.getName}`);
+            console.log(`${this.getName} damage = ${this.getDamage}`);
+            enemy.takeDamage(this.getDamage);
+            console.log(`${enemy.getName} health became ${enemy.getHealth}`)
+        }
+        else{
+            console.log(`${this.getName} use fire arrows and ${enemy.getName} became burning`);
+            super.attack(enemy);
+            enemy.becameBurning();
+        }
     }
 
     constructor(){
