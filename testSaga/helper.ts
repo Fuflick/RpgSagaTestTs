@@ -9,14 +9,17 @@ export class Helper{
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
-  static getRandomEnumValue<T>(enumObj: T): T[keyof T] {
-    const enumValues = Object.values(enumObj);
+  static getRandomEnumValue(enumObj: any): any {
+    const enumValues = Object.keys(enumObj)
+      .filter(key => isNaN(Number(key)))
+      .map(key => enumObj[key]);
+  
     const randomIndex = Math.floor(Math.random() * enumValues.length);
-    return enumValues[randomIndex] as T[keyof T];
+    return enumValues[randomIndex];
   }
 
-  static generateCharacter(): Unit {
-    for (let i = 0; i < 1; i++){
+  static generateCharacter(): Unit  | undefined
+   {
         let character: Unit;
         switch (Helper.getRandomEnumValue(Classes)) {
           case Classes.WARRIOR:
@@ -33,6 +36,5 @@ export class Helper{
             return character;
         }
     }     
-}
 }
  
