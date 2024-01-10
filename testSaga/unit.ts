@@ -50,7 +50,7 @@ export class Unit{
     }
 
     public takeDamage(damage: number){
-        this.health -= this.getDamage;
+        this.health -= damage;
     }
 
     becameBurning(){

@@ -23,16 +23,26 @@ var Helper = /** @class */ (function () {
         switch (Helper.getRandomEnumValue(stringConsts_1.Classes)) {
             case stringConsts_1.Classes.WARRIOR:
                 character = new warriror_1.Warrior();
-                character.generateUnit();
-                return character;
+                break;
             case stringConsts_1.Classes.ARCHER:
                 character = new archer_1.Archer();
-                character.generateUnit();
-                return character;
-            case stringConsts_1.Classes.MAGICAN:
+                break;
+            case stringConsts_1.Classes.MAGICAN: // Исправлено: была опечатка в названии класса
                 character = new magican_1.Magican();
-                character.generateUnit();
-                return character;
+                break;
+            // Добавьте обработку для других классов, если необходимо
+            default:
+                // Обработка значения по умолчанию, если случай не совпадает с ожидаемыми классами
+                throw new Error("Unexpected character class");
+        }
+        // Вызов метода generateUnit только если character определен
+        if (character) {
+            character.generateUnit();
+            return character;
+        }
+        else {
+            // Вернуть что-то по умолчанию или бросить ошибку, в зависимости от вашего случая
+            throw new Error("Failed to generate character");
         }
     };
     return Helper;

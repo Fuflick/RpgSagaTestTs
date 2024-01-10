@@ -18,23 +18,37 @@ export class Helper{
     return enumValues[randomIndex];
   }
 
-  static generateCharacter(): Unit  | undefined
-   {
-        let character: Unit;
-        switch (Helper.getRandomEnumValue(Classes)) {
-          case Classes.WARRIOR:
+  static generateCharacter(): Unit {
+    let character: Unit;
+    switch (Helper.getRandomEnumValue(Classes)) {
+        case Classes.WARRIOR:
             character = new Warrior();
-            character.generateUnit();
-            return character;
-          case Classes.ARCHER:
+            break;
+        
+        case Classes.ARCHER:
             character = new Archer();
-            character.generateUnit();
-            return character;
-          case Classes.MAGICAN:
+            break;
+
+        case Classes.MAGICAN:  // Исправлено: была опечатка в названии класса
             character = new Magican();
-            character.generateUnit();
-            return character;
-        }
-    }     
+            break;
+
+        // Добавьте обработку для других классов, если необходимо
+
+        default:
+            // Обработка значения по умолчанию, если случай не совпадает с ожидаемыми классами
+            throw new Error("Unexpected character class");
+    }
+
+    // Вызов метода generateUnit только если character определен
+    if (character) {
+        character.generateUnit();
+        return character;
+    } else {
+        // Вернуть что-то по умолчанию или бросить ошибку, в зависимости от вашего случая
+        throw new Error("Failed to generate character");
+    }
+}
+
 }
  

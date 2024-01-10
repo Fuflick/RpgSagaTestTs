@@ -6,7 +6,7 @@ export class Logger{
     }
 
     static startMessage(){
-        console.log('Fight started now');
+        console.log('Game started now');
     }
 
     static characterBurn(character: Unit, firedamage) {

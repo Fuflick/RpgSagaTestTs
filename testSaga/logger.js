@@ -8,7 +8,7 @@ var Logger = /** @class */ (function () {
         return "".concat(unit.classType, " ").concat(unit.getName);
     };
     Logger.startMessage = function () {
-        console.log('Fight started now');
+        console.log('Game started now');
     };
     Logger.characterBurn = function (character, firedamage) {
         console.log("".concat(this.getCharacterParams(character).toString(), " burn and take ").concat(firedamage, " damage"));
