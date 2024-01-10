@@ -56,7 +56,7 @@ var Unit = /** @class */ (function () {
         this.damage = helper_1.Helper.getRandomInt(1, 5);
     };
     Unit.prototype.takeDamage = function (damage) {
-        this.health -= this.getDamage;
+        this.health -= damage;
     };
     Unit.prototype.becameBurning = function () {
         this.burning = true;

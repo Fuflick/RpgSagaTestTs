@@ -6,7 +6,7 @@ export class Logger{
     }
 
     static startMessage(){
-        console.log('Game started now');
+        console.log('Fight started now!!!\n');
     }
 
     static characterBurn(character: Unit, firedamage) {
@@ -15,21 +15,21 @@ export class Logger{
 
     static fighting(character1: Unit, character2: Unit){
         if (character1 != character2){
-            while(character1.getHealth > 0 && character2.getHealth > 0){
+            while(character1.getHealth > 0 || character2.getHealth > 0){
 
                 if (character1.getHealth > 0){
                     character2.attack(character1);
                 }
                 if (character1.getHealth <= 0){
-                    console.log(`${character2.getName} wins!`);
-                    console.log()
+                    console.log(`${character2.getName} wins!\n\n`);
+                    break;
                 }
                 if (character2.getHealth > 0){
                     character1.attack(character2);
                 }
                 if (character2.getHealth <= 0){
-                    console.log(`${character1.getName} wins!`);
-                    console.log();
+                    console.log(`${character1.getName} wins!\n\n`);
+                    break;
                 }
             }
         }
