@@ -17,7 +17,6 @@ export class Archer extends Unit{
         if (enemy.isBurn){
             console.log(`${Logger.getCharacterParams(this).toString()} attack ${Logger.getCharacterParams(enemy).toString()}`);
             enemy.burnInFigth();
-            console.log(`${this.getName} attack ${enemy.getName}`);
             console.log(`${this.getName} damage = ${this.getDamage}`);
             enemy.takeDamage(this.getDamage);
             console.log(`${enemy.getName} health became ${enemy.getHealth}`)
