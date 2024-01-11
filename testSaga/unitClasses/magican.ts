@@ -18,8 +18,8 @@ export class Magican extends Unit{
         }
         else{
             console.log(`${this.classType} ${this.getName} attack ${Logger.getCharacterParams(enemy).toString()}`);
-            console.log(`${this.getName} use IceFrost and delals ${enemy.getName} cold damage = 5`);
-            enemy.takeDamage(5);
+            console.log(`${this.getName} use IceFrost to ${enemy.getName} `);
+            enemy.takeDamage(this.getDamage);
             console.log(`${enemy.getName} became frozen and it's health became ${enemy.getHealth}`);
             console.log(`${this.getName} attack ${enemy.getName} with damage: ${this.getDamage}`);
             enemy.takeDamage(this.getDamage);
