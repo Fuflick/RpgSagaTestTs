@@ -6,10 +6,10 @@ var helper_1 = require("./helper");
 var logger_1 = require("./logger");
 var Unit = /** @class */ (function () {
     function Unit() {
-        this.classType = '';
-        this.burning = false;
-        this.skillUsed = false;
-        this.minHealth = 3;
+        this.classType = ''; //тип героя
+        this.burning = false; //горит или нет
+        this.skillUsed = false; // использована способность или нет
+        this.minHealth = 3; // диапазон здоровья для генерации персонажа
         this.maxHealth = 15;
     }
     Object.defineProperty(Unit.prototype, "isBurn", {
@@ -27,7 +27,7 @@ var Unit = /** @class */ (function () {
         configurable: true
     });
     Unit.prototype.useSkill = function () {
-        this.skillUsed = true;
+        this.skillUsed = true; // испольщование способности переводит переменную skillUsed в true, а это метод, который это делает
     };
     Object.defineProperty(Unit.prototype, "getHealth", {
         get: function () {

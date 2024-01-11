@@ -34,13 +34,13 @@ var Archer = /** @class */ (function (_super) {
         if (enemy.isBurn) {
             console.log("".concat(logger_1.Logger.getCharacterParams(this).toString(), " attack ").concat(logger_1.Logger.getCharacterParams(enemy).toString()));
             enemy.burnInFigth();
-            console.log("".concat(this.getName, " attack ").concat(enemy.getName));
+            console.log("".concat(enemy.getName, " healt became ").concat(enemy.getHealth));
             console.log("".concat(this.getName, " damage = ").concat(this.getDamage));
             enemy.takeDamage(this.getDamage);
             console.log("".concat(enemy.getName, " health became ").concat(enemy.getHealth));
         }
         else {
-            console.log("".concat(this.getName, " use fire arrows and ").concat(enemy.getName, " became burning"));
+            console.log("".concat(logger_1.Logger.getCharacterParams(this).toString(), " use fire arrows and ").concat(logger_1.Logger.getCharacterParams(enemy).toString(), " became burning"));
             _super.prototype.attack.call(this, enemy);
             enemy.becameBurning();
         }
