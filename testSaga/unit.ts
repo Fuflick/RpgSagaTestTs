@@ -5,7 +5,7 @@ import { Logger } from "./logger";
 
 export class Unit{
     classType = ''; //тип героя
-     
+         
     private burning = false; //горит или нет
 
     get isBurn(): boolean{ // метод чтобы узнать, горит или нет

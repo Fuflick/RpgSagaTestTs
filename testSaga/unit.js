@@ -7,11 +7,22 @@ var logger_1 = require("./logger");
 var Unit = /** @class */ (function () {
     function Unit() {
         this.classType = ''; //тип героя
+        this.status = '';
         this.burning = false; //горит или нет
         this.skillUsed = false; // использована способность или нет
         this.minHealth = 3; // диапазон здоровья для генерации персонажа
         this.maxHealth = 15;
     }
+    Unit.prototype.becameWinner = function () {
+        this.status = "winner";
+    };
+    Object.defineProperty(Unit.prototype, "getStatus", {
+        get: function () {
+            return this.status;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(Unit.prototype, "isBurn", {
         get: function () {
             return this.burning;
@@ -70,6 +81,14 @@ var Unit = /** @class */ (function () {
     Unit.prototype.burnInFigth = function () {
         this.takeDamage(stringConsts_1.fireDamage);
         logger_1.Logger.characterBurn(this, stringConsts_1.fireDamage);
+    };
+    Unit.prototype.copy = function () {
+        var copy = new Unit();
+        copy.name = this.name;
+        copy.damage = this.damage;
+        copy.classType = this.classType;
+        copy.status = '';
+        return copy;
     };
     return Unit;
 }());

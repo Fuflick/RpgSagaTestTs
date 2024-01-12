@@ -36,8 +36,8 @@ var Magican = /** @class */ (function (_super) {
         }
         else {
             console.log("".concat(this.classType, " ").concat(this.getName, " attack ").concat(logger_1.Logger.getCharacterParams(enemy).toString()));
-            console.log("".concat(this.getName, " use IceFrost and delals ").concat(enemy.getName, " cold damage = 5"));
-            enemy.takeDamage(5);
+            console.log("".concat(this.getName, " use IceFrost to ").concat(enemy.getName, " "));
+            enemy.takeDamage(this.getDamage);
             console.log("".concat(enemy.getName, " became frozen and it's health became ").concat(enemy.getHealth));
             console.log("".concat(this.getName, " attack ").concat(enemy.getName, " with damage: ").concat(this.getDamage));
             enemy.takeDamage(this.getDamage);
